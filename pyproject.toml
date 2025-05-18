@@ -1,0 +1,10 @@
+[project]
+name = "testbench-fast-get-api-mcp"
+version = "0.1.0"
+description = "TestBench GET MCP"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi-mcp>=0.3.3",
+    "questionary>=2.1.0",
+]

@@ -5,19 +5,13 @@ Es nutzt dabei Teile diese Repositories: [testbench-cli-reporter](https://github
 
 ## Starten des Servers
 
-1. Stelle sicher, dass FastAPI und Uvicorn installiert sind:
+1. Starte den Server mit:
    
    ```pwsh
-   pip install fastapi uvicorn
+   uv run uvicorn main:app --reload
    ```
 
-2. Starte den Server mit:
-   
-   ```pwsh
-   uvicorn main:app --reload
-   ```
-
-3. Die API-Dokumentation ist dann unter [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) erreichbar.
+2. Die API-Dokumentation ist dann unter [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) erreichbar.
 
 ## Configuration
 
