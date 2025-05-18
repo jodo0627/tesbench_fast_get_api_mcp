@@ -23,9 +23,9 @@ from collections import OrderedDict
 from pathlib import Path
 from re import fullmatch
 from typing import Any, Dict, Optional, Union
-from questionary import print as pprint
+from questionary import print as pprint  # type:ignore
 
-from .config_model import (
+from config_model import (
     CliReporterConfig,
     ExecutionResultsImportOptions,
     ExportAction,
@@ -475,7 +475,7 @@ def pretty_print_tse_information(tse, typ, info):
 
 
 def pretty_print_success_message(prefix: str, value: Any, suffix: str):
-    logger.debug(f"{prefix} {value} {suffix}")
+    print(f"{prefix} {value} {suffix}")
     pretty_print(
         {"value": f"{prefix} ", "end": None},
         {

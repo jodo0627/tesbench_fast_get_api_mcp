@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, HTTPException
+from fastapi import FastAPI, Query, HTTPException  # type: ignore
 from typing import List, Dict, Any
 from utils.testbench import Connection
 

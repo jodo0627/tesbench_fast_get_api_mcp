@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
 import requests  # type: ignore
-from requests.adapters import HTTPAdapter # type: ignore
+from requests.adapters import HTTPAdapter  # type: ignore
 import urllib3  # type: ignore
 from util import (
     AbstractAction,
@@ -133,52 +133,6 @@ class Connection:
 
         return all_filters.json()
 
-    def get_xml_report(
-        self, tov_key: str, cycle_key: str, reportRootUID: str, filters=None
-    ) -> bytes:
-        if filters is None:
-            filters = []
-        job_id = self.trigger_xml_report_generation(
-            tov_key, cycle_key, reportRootUID, filters
-        )
-        report_tmp_name = self.wait_for_tmp_xml_report_name(job_id)
-        return self.get_xml_report_data(report_tmp_name)
-
-    def trigger_xml_report_generation(
-        self,
-        tov_key: str,
-        cycle_key: str,
-        reportRootUID: str,
-        filters=None,
-        report_config=None,
-    ) -> str:
-        if report_config is None:
-            report_config = XmlExportConfig["Itep Export"]
-        if filters is None:
-            filters = []
-
-        if reportRootUID and reportRootUID != "ROOT":
-            report_config.reportRootUID = reportRootUID
-        report_config.filters = filters
-        if cycle_key and cycle_key != "0":
-            response = self.session.post(
-                f"{self.server_url}cycle/{cycle_key}/xmlReport",
-                json=dataclasses.asdict(report_config),
-            )
-        else:
-            response = self.session.post(
-                f"{self.server_url}tovs/{tov_key}/xmlReport",
-                json=dataclasses.asdict(report_config),
-            )
-        return response.json()["jobID"]
-
-    def wait_for_tmp_xml_report_name(self, job_id: str) -> str:
-        while True:
-            report_generation_result = self.get_exp_job_result(job_id)
-            if report_generation_result is not None:
-                return report_generation_result
-            spin_spinner("Waiting until creation of XML report is complete")
-
     def get_exp_job_result(self, job_id):
         report_generation_status = self.get_job_result("job/", job_id)
         if report_generation_status is None:
@@ -254,10 +208,8 @@ class Connection:
         )
         test_cases_execs = {tc["uniqueID"]: tc for tc in exec_test_cases}
         equal_lists = False not in [
-            (
-                test_cases.get(uid, {}).get("testCaseSpecificationKey") is not None
-                and test_cases.get(uid, {}).get("testCaseSpecificationKey").get("serial") == tc["paramCombPK"]["serial"]
-            )
+            test_cases.get(uid, {}).get("testCaseSpecificationKey")["serial"]
+            == tc["paramCombPK"]["serial"]
             for uid, tc in test_cases_execs.items()
         ]
         return {
