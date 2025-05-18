@@ -1,6 +1,7 @@
 # TestBenchCliReporter FastAPI Server
 
-Dieses Projekt stellt einen FastAPI-Server bereit, der alle GET-Funktionen aus einer Klasse `TestBenchCliReporter` als API-Endpunkte verfügbar macht.
+Dieses Projekt stellt einen FastAPI-Server bereit, der alle GET-Funktionen aus dem `TestBenchCliReporter` als API-Endpunkte verfügbar macht.
+Es nutzt dabei Teile diese Repositories: [testbench-cli-reporter](https://github.com/imbus/testbench-cli-reporter), und integriert diese Funktionen in ein FastAPI MCP: [fastapi_mcp](https://github.com/tadata-org/fastapi_mcp)
 
 ## Starten des Servers
 
