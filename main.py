@@ -33,6 +33,7 @@ def get_all_projects() -> Dict:
 
     Parameters:
     - None
+    
     Returns:
     - Dict: A dictionary containing all projects.
     """
@@ -47,6 +48,7 @@ def get_all_filters() -> List[Dict]:
 
     Parameters:
     - None
+    
     Returns:
     - List[Dict]: A list of dictionaries with filter information.
     """
@@ -65,6 +67,7 @@ def get_all_testers_of_project(project_key: str) -> List[Dict]:
 
     Parameters:
     - project_key (str): The key of the project.
+    
     Returns:
     - List[Dict]: A list of dictionaries with tester information.
     """
@@ -83,6 +86,7 @@ def get_all_members_of_project(project_key: str) -> List[Dict]:
 
     Parameters:
     - project_key (str): The key of the project.
+    
     Returns:
     - List[Dict]: A list of dictionaries with member information.
     """
@@ -101,6 +105,7 @@ def get_test_cycle_structure(cycle_key: str) -> List[Dict]:
 
     Parameters:
     - cycle_key (str): The key of the test cycle.
+    
     Returns:
     - List[Dict]: A list of dictionaries with structure information.
     """
@@ -119,6 +124,7 @@ def get_tov_structure(tov_key: str) -> List[Dict]:
 
     Parameters:
     - tov_key (str): The key of the TOV.
+    
     Returns:
     - List[Dict]: A list of dictionaries with TOV structure information.
     """
@@ -138,6 +144,7 @@ def get_spec_test_cases(test_case_set_key: str, specification_key: str) -> List[
     Parameters:
     - test_case_set_key (str): The key of the test case set.
     - specification_key (str): The key of the specification.
+    
     Returns:
     - List[Dict]: A list of dictionaries with specification test cases.
     """
@@ -157,6 +164,7 @@ def get_exec_test_cases(test_case_set_key: str, execution_key: str) -> List[Dict
     Parameters:
     - test_case_set_key (str): The key of the test case set.
     - execution_key (str): The key of the execution.
+    
     Returns:
     - List[Dict]: A list of dictionaries with execution test cases.
     """
@@ -173,6 +181,7 @@ def get_test_cases(test_case_set_structure: Dict[str, Any]) -> Dict[str, Dict]:
 
     Parameters:
     - test_case_set_structure (Dict[str, Any]): The structure of the test case set.
+    
     Returns:
     - Dict[str, Dict]: A dictionary with test case data.
     """
@@ -187,4 +196,5 @@ mcp = FastApiMCP(
     describe_full_response_schema=True,
 )
 
+# Mount the MCP server directly to the FastAPI app
 mcp.mount()

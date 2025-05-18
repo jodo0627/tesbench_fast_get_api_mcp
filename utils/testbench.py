@@ -19,12 +19,10 @@ from typing import Any, Dict, List, Optional, Union
 import requests  # type: ignore
 from requests.adapters import HTTPAdapter  # type: ignore
 import urllib3  # type: ignore
-from util import (
+from utils.util import (
     AbstractAction,
-    XmlExportConfig,
-    spin_spinner,
 )
-from config_model import (
+from utils.config_model import (
     CliReporterConfig,
     Configuration,
 )

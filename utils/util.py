@@ -25,7 +25,7 @@ from re import fullmatch
 from typing import Any, Dict, Optional, Union
 from questionary import print as pprint  # type:ignore
 
-from config_model import (
+from utils.config_model import (
     CliReporterConfig,
     ExecutionResultsImportOptions,
     ExportAction,
